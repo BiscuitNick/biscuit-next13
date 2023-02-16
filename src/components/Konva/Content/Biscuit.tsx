@@ -1,4 +1,5 @@
-import { Group } from "react-konva";
+const Konva = require("react-konva");
+const { Group } = Konva;
 import { Eye, AnimatedRectangle, AnimatedImage, AnimatedText } from "..";
 // import  from "../../../utils/getInnerPosition";
 // import {

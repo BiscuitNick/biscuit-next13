@@ -12,7 +12,7 @@ export interface CircleProps {
   //Size
   radius: number;
 
-  //Style
+  //StyleF
   fill?: string;
   stroke?: string;
   fillEnabled?: boolean;
