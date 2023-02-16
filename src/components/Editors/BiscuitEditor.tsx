@@ -63,7 +63,7 @@ interface EditorProps {
     [key: string]: any;
   };
   setContentObject: any;
-  updateChangeLog: ( ) => void; //id: string, //value: any
+  updateChangeLog: any; //( ) => void; //id: string, //value: any
   show: boolean;
   contentIDs: string[];
   contentOrder: number[];
