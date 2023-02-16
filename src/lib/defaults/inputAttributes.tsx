@@ -1,4 +1,4 @@
-interface inputAttributes {
+interface inputAttributesProps {
   [key: string]: {
     inputType: "number" | "colorSwitch" | "toggle" | "selection" | "text";
     label: string;
@@ -19,7 +19,7 @@ interface inputAttributes {
   };
 }
 
-const inputAttributes: inputAttributes = {
+const inputAttributes: inputAttributesProps = {
   opacity: {
     inputType: "number",
     label: "Opacity",

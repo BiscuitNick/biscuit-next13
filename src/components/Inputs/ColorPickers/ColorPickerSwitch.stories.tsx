@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react"; //ComponentStory, 
 import ColorPickerSwitch from "./";
 import "../../../../styles/globals.css";
 
@@ -18,9 +18,9 @@ export default {
 } as ComponentMeta<typeof ColorPickerSwitch>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ColorPickerSwitch> = (args) => (
-  <ColorPickerSwitch {...args} />
-);
+// const Template: ComponentStory<typeof ColorPickerSwitch> = (args) => (
+//   <ColorPickerSwitch {...args} />
+// );
 
 export const Example = ({ value }: any) => {
   const [color, setState] = useState(value);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSpring, animated, config } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web"; //config
 
 export interface DiceFace {
   img: string | null;
@@ -9,7 +9,7 @@ export interface DiceFace {
   divStyle?: any;
 }
 
-interface Dice {
+interface DiceProps {
   size: number;
   n: number;
   counter: number;
@@ -23,14 +23,14 @@ interface Dice {
 const random360 = (min = 1, max = 5) =>
   (Math.floor(Math.random() * max) + min) * 360;
 
-const Dice = (props: Dice) => {
+const Dice = (props: DiceProps) => {
   const {
     size,
     n,
     counter = 0,
     onClick,
     faces,
-    margin,
+    // margin,
     minRotation = false,
   } = props;
 
@@ -53,7 +53,7 @@ const Dice = (props: Dice) => {
     { y: 0, x: 0, z: 0, side: "front" },
   ];
 
-  const { x, y, z, side } = rotations[n % 6];
+  const { x, y, z,  } = rotations[n % 6]; //side 
 
   var xRotation = x + random360(); //: random360();
   var yRotation = y + random360(); //: random360();
@@ -107,7 +107,7 @@ const Dice = (props: Dice) => {
         {transforms.map((transform, i) => {
           let face = faces[i % faces.length];
 
-          const { img, text, backgroundColor, border, divStyle } = face;
+          const { divStyle } = face; //img, text, backgroundColor, border, 
 
           const style = {
             // margin: "auto",
@@ -144,7 +144,7 @@ const Dice = (props: Dice) => {
                   display: "grid",
                 }}
               >
-                {true ? (
+                {/* {true ? ( */}
                   <span
                     style={{
                       margin: "auto",
@@ -159,7 +159,7 @@ const Dice = (props: Dice) => {
                   >
                     {i}
                   </span>
-                ) : null}
+                {/* ) : null} */}
               </div>
             </div>
           );

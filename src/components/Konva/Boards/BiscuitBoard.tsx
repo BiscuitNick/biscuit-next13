@@ -31,7 +31,7 @@ const BiscuitBoard = (props: BiscuitProps) => {
   const dragItem = useRef<any>(null);
 
   const [selectedID, setSelectedID] = useState("");
-  const [contentIDs, setContentIDs] = useState(initIDs);
+  const [contentIDs, ] = useState(initIDs); //setContentIDs
   const [contentOrder, setOrder] = useState(initIDs.map((id, i) => i));
   const [contentObject, setContentObject] = useState(initContentObject);
   const [changeLog, setChangeLog] = useState<any>([]);
@@ -136,7 +136,7 @@ const BiscuitBoard = (props: BiscuitProps) => {
     }
   };
 
-  const update = (newOrder: number[], stack: string[]) => {
+  const update = (newOrder: number[]) => { //, stack: string[]
     if (contentIDs.length > newOrder.length) {
       // setOrder(myOrder);
     } else {
@@ -146,7 +146,7 @@ const BiscuitBoard = (props: BiscuitProps) => {
 
   useEffect(() => {
     console.log(changeLog);
-  }, [changeLog.length]);
+  }, [changeLog]);
 
   return (
     <>

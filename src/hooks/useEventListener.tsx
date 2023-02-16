@@ -3,11 +3,11 @@ import { useRef, useEffect, useCallback, RefObject } from "react";
 import getRefElement from "../utils/getRefElement";
 import isSSR from "../utils/isSSR";
 
-interface UseEventListener {
-  type: keyof WindowEventMap;
-  listener: EventListener;
+interface useEventListenerProps {
+  type: any; //keyof WindowEventMap;
+  listener: any; //EventListener;
   element?: RefObject<Element> | Document | Window | null;
-  options?: AddEventListenerOptions;
+  options?: any; //AddEventListenerOptions;
 }
 
 const useEventListener = ({
@@ -15,8 +15,8 @@ const useEventListener = ({
   listener,
   element = isSSR ? undefined : window,
   options,
-}: UseEventListener): void => {
-  const savedListener = useRef<EventListener>();
+}: useEventListenerProps): void => {
+  const savedListener = useRef<any>();
 
   useEffect(() => {
     savedListener.current = listener;

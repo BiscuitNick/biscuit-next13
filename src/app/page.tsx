@@ -19,7 +19,7 @@ export default function Home() {
             Powered By{' '}
             <Image
               src="/assets/biscuitland/favicon-32x32.png"
-              alt="Biscuit Land Logo"
+              alt="Biscuit Land"
               className={styles.vercelLogo}
               width={32}
               height={32}
@@ -33,7 +33,7 @@ export default function Home() {
         <Image
           className={styles.logo}
           src="/assets/biscuitland/192x192.png"
-          alt="Next.js Logo"
+          alt="Biscuit Land Logo"
           width={192}
           height={192}
           priority
@@ -58,8 +58,6 @@ export default function Home() {
         <Link
           href="/templates"
           className={styles.card}
-          // target="_blank"
-          // rel="noopener noreferrer"
         >
           <h2 className={inter.className}>
             Templates <span>-&gt;</span>
@@ -70,8 +68,6 @@ export default function Home() {
         <a
           href="/about"
           className={styles.card}
-          // target="_blank"
-          // rel="noopener noreferrer"
         >
           <h2 className={inter.className}>
             About <span>-&gt;</span>

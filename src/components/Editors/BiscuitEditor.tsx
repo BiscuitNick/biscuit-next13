@@ -62,8 +62,8 @@ interface EditorProps {
   contentObject: {
     [key: string]: any;
   };
-  setContentObject: ({}: any) => void;
-  updateChangeLog: (id: string, value: any) => void;
+  setContentObject: any;
+  updateChangeLog: any; //( ) => void; //id: string, //value: any
   show: boolean;
   contentIDs: string[];
   contentOrder: number[];
@@ -147,7 +147,7 @@ const BiscuitEditor = (editorProps: EditorProps) => {
     ...textAttributes[contentType],
   ];
 
-  const SetAttributes = allAttributes.map((attr: string, i: number) => {
+  const SetAttributes = allAttributes.map((attr: string, ) => { //i: number
     const params = inputAttributes[attr];
     if (!params) return null;
     const { inputType, label } = params;

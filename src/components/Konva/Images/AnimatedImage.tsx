@@ -2,8 +2,8 @@ import React from "react";
 const SpringKonva = require("@react-spring/konva");
 const { animated, useSpring } = SpringKonva;
 const useImage = require("use-image");
-const Konva = require("react-konva");
-const { Image } = Konva;
+// const Konva = require("react-konva");
+// const { Image } = Konva;
 
 export interface ImageProps {
   //Size & Position
@@ -35,7 +35,7 @@ export interface ImageProps {
 }
 
 const AnimatedImage = (props: ImageProps) => {
-  const [image, status] = useImage(props.src);
+  const [image, ] = useImage(props.src); //status
   const { x, y, width, height, rotation, offsetX, offsetY } = props;
   const imageSpring = useSpring({
     x,
