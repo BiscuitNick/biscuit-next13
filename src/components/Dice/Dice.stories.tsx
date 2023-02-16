@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react"; //ComponentStory, 
 import Dice from ".";
 import { standardFaces, puppyFaces } from "./standardFaces";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Dice>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Dice> = (args) => <Dice {...args} />;
+// const Template: ComponentStory<typeof Dice> = (args) => <Dice {...args} />;
 
 export const StandardDice = ({
   size = 200,

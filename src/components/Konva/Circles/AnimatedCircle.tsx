@@ -1,8 +1,8 @@
 import React from "react";
 const SpringKonva = require("@react-spring/konva");
 const { animated, useSpring } = SpringKonva;
-const Konva = require("react-konva");
-const { Circle } = Konva;
+// const Konva = require("react-konva");
+// const { Circle } = Konva;
 
 export interface CircleProps {
   //Position

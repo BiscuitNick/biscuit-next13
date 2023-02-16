@@ -1,4 +1,4 @@
-import { eyeDefaults } from "../defaults";
+// import { eyeDefaults } from "../defaults";
 
 export interface eyeBuild {
   focalPoint: any; //number;

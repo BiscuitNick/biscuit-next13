@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 // import "./NumberInput.css";
 
 export interface NumberInputProps {
@@ -21,7 +21,7 @@ export interface NumberInputProps {
 const NumberInput = (props: NumberInputProps) => {
   const { id, label, value, onChange: handleChange, min, max, step } = props;
 
-  const inputRef = useRef(value);
+  // const inputRef = useRef(value);
 
   return (
     <div className={"inputContainer2Wide"}>

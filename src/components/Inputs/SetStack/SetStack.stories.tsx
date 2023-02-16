@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react"; //ComponentStory
 import SetStack from "./";
 import "../../../../styles/globals.css";
 
@@ -24,9 +24,9 @@ export default {
 } as ComponentMeta<typeof SetStack>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Template: ComponentStory<typeof SetStack> = (args) => (
-  <Example {...args} />
-);
+// export const Template: ComponentStory<typeof SetStack> = (args) => (
+//   <Example {...args} />
+// );
 
 export const Example = ({ contentObject }: any) => {
   // const [contentObj, setContentObject] = useState(contentObject);
@@ -40,7 +40,7 @@ export const Example = ({ contentObject }: any) => {
     Object.keys(contentObject).map((id) => id)
   );
 
-  const update = (newOrder: number[], stack: string[]) => {
+  const update = (newOrder: number[]) => { // stack: string[]
     console.log(
       "NEW ORDER",
       newOrder,
@@ -48,6 +48,7 @@ export const Example = ({ contentObject }: any) => {
     );
 
     if (contentIDs.length > newOrder.length) {
+      // console.log('blah')
     } else {
       setOrder(newOrder);
     }
@@ -59,7 +60,7 @@ export const Example = ({ contentObject }: any) => {
       setIDs(Object.keys(contentObject).map((id) => id));
       setOrder(Object.keys(contentObject).map((_, i) => i));
     }
-  }, [contentObject]);
+  }, [contentObject, contentOrder.length]);
 
   return (
     <SetStack

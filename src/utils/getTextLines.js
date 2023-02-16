@@ -56,9 +56,9 @@ const fitTextLine = (props) => {
 };
 
 const fitTextBox = ({ parameters, size, canvasRef }) => {
-  const { strokeWidthFactor: r_check } = parameters; //verticalAlign
+  // const { strokeWidthFactor: r_check } = parameters; //verticalAlign
 
-  const r_strokeWidth = r_check || 0;
+  // const r_strokeWidth = r_check || 0;
   const verticalAlign = "middle";
 
   if (!canvasRef || canvasRef.current === null) return null;
@@ -137,8 +137,8 @@ const getTextLines = (props) => {
 
   if (!canvasRef || canvasRef.current === null) return null;
   const { width, height } = box;
-
-  const { text, fontFamily, fontStyle, verticalAlign } = content;
+ 
+  const { text,  fontStyle,  } = content; //fontFamily, verticalAlign
 
   const readyTexts = fitTextBox({
     parameters: {

@@ -8,7 +8,7 @@ export interface StagePositions {
 }
 
 const useStagePositions = ({ canvasRef, delay }: StagePositions) => {
-  const [xy, set] = useState({ x: 0, y: 0 });
+  // const [xy, set] = useState({ x: 0, y: 0 });
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
