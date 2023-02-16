@@ -1,6 +1,7 @@
 import React from "react";
 import { AnimatedRectangle, AnimatedCircle } from "../";
-import { getRatio } from "@biscuitnick/biscuit-library";
+import getRatio from "@/utils/getRatio";
+// import { getRatio } from "@biscuitnick/biscuit-library";
 
 const SpringKonva = require("@react-spring/konva");
 const { animated, useSpring } = SpringKonva;
