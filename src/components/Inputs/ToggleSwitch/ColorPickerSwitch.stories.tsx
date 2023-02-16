@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react"; //ComponentStory
 import ToggleSwitch from "./";
 import "../../../../styles/globals.css";
 
@@ -11,9 +11,9 @@ export default {
 } as ComponentMeta<typeof ToggleSwitch>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ToggleSwitch> = (args) => (
-  <ToggleSwitch {...args} />
-);
+// const Template: ComponentStory<typeof ToggleSwitch> = (args) => (
+//   <ToggleSwitch {...args} />
+// );
 
 export const Toggle = ({ value = true, round = true }: any) => {
   const [toggleValue, setToggle] = useState(value);

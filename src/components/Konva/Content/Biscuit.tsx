@@ -38,7 +38,7 @@ const Biscuit = (props: BiscuitProps) => {
     canvasRef,
     handleClick,
     handleDrag,
-    id,
+    // id,
   } = props;
   const focalPoint = useStagePositions({ canvasRef });
 
@@ -59,7 +59,8 @@ const Biscuit = (props: BiscuitProps) => {
     if (!active) return null;
 
     switch (contentType) {
-      case "eye":
+      case "eye": {
+
         let eyeprops = buildEyeProps({
           ...data,
           absolutes: squareBox,
@@ -83,7 +84,8 @@ const Biscuit = (props: BiscuitProps) => {
             handleClick={handleClick}
           />
         );
-      case "rect":
+        }
+      case "rect": {
         let rectProps = buildRectProps({
           ...data,
           absolutes: squareBox, //{ width: squareWH, height: squareWH },
@@ -98,7 +100,8 @@ const Biscuit = (props: BiscuitProps) => {
             handleClick={handleClick}
           />
         );
-      case "image":
+      }
+      case "image": {
         let imageProps = buildImageProps({
           ...data,
           absolutes: squareBox, //{ width: squareWH, height: squareWH },
@@ -113,7 +116,8 @@ const Biscuit = (props: BiscuitProps) => {
             handleClick={handleClick}
           />
         );
-      case "text":
+      }
+      case "text": {
         let textProps = buildTextProps({
           ...data,
           absolutes: squareBox,
@@ -129,7 +133,7 @@ const Biscuit = (props: BiscuitProps) => {
             canvasRef={canvasRef}
           />
         );
-
+      }
       default:
         return null;
     }

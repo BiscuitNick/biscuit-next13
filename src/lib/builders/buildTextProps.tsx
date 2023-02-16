@@ -1,4 +1,4 @@
-import { rectDefaults } from "../defaults";
+// import { rectDefaults } from "../defaults";
 
 export interface textBuild {
   rotation?: number;

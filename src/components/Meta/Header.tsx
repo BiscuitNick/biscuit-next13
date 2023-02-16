@@ -10,12 +10,12 @@ import Head from "next/head";
 // const href = `/${project}/apple-touch-icon.png`;
 // const manifest = `/${project}-manifest.json`;
 
-interface Header {
+interface HeaderProps {
   title: string;
   description: string;
 }
 
-const Header = (props: Header) => {
+const Header = (props: HeaderProps) => {
   const { title, description } = props;
 
   //   const optimalUrl = optimizedUrl({ url, type: "meta" });

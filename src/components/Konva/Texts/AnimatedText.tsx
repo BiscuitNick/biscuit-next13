@@ -3,8 +3,8 @@ import getTextLines from "../../../utils/getTextLines";
 
 const SpringKonva = require("@react-spring/konva");
 const { animated, useSprings, useSpring } = SpringKonva;
-const Konva = require("react-konva");
-const { Group, Text } = Konva;
+// const Konva = require("react-konva");
+// const { Group, Text } = Konva;
 
 interface AnimatedTextProps {
   //Size & Position
@@ -76,12 +76,12 @@ const AnimatedText = (props: AnimatedTextProps) => {
     fontStyle,
 
     draggable,
-    immediateXY,
-    listening,
+    // immediateXY,
+    // listening,
     fillEnabled,
     strokeEnabled,
-    textBoxFillEnabled,
-    textBoxStrokeEnabled,
+    // textBoxFillEnabled,
+    // textBoxStrokeEnabled,
     textContent,
   } = props;
 

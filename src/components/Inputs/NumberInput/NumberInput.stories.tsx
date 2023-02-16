@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react"; //ComponentStory, 
 import NumberInput from "./";
 import "../../../../styles/globals.css";
 
@@ -15,9 +15,9 @@ export default {
 } as ComponentMeta<typeof NumberInput>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof NumberInput> = (args) => (
-  <NumberInput {...args} />
-);
+// const Template: ComponentStory<typeof NumberInput> = (args) => (
+//   <NumberInput {...args} />
+// );
 
 export const Example = ({
   value = 50,

@@ -1,4 +1,4 @@
-import { imageDefaults } from "../defaults";
+// import { imageDefaults } from "../defaults";
 
 export interface imageBuild {
   rotation?: number;

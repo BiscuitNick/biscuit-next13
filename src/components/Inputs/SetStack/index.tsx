@@ -3,37 +3,21 @@ import { useDrag } from "react-use-gesture";
 import { useSprings, animated } from "@react-spring/web";
 
 import { clamp, swap } from "../../../lib/helpers";
-import ImageIcon from "@mui/icons-material/Image";
-import TextFieldsIcon from "@mui/icons-material/TextFields";
+// import ImageIcon from "@mui/icons-material/Image";
+import TextFieldsIcon from "@mui/icons-material/TextFields"
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import RectangleIcon from "@mui/icons-material/Rectangle";
-import CircleIcon from "@mui/icons-material/Circle";
+// import CircleIcon from "@mui/icons-material/Circle";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import ToggleSwitch from "../ToggleSwitch";
 
-const Icons: any = {
-  image: <ImageIcon />,
-  text: <TextFieldsIcon />,
-  eye: <VisibilityIcon />,
-  rect: <RectangleIcon />,
-  circle: <CircleIcon />,
-};
-
-// #fafa6e
-// #d7f171
-// #b5e877
-// #95dd7d
-// #77d183
-// #5bc489
-// #3fb78d
-// #23aa8f
-// #009c8f
-// #008d8c
-// #007f86
-// #0b717e
-// #1c6373
-// #255566
-// #2a4858
+// const Icons: any = {
+//   image: <ImageIcon />,
+//   text: <TextFieldsIcon />,
+//   eye: <VisibilityIcon />,
+//   rect: <RectangleIcon />,
+//   circle: <CircleIcon />,
+// };
 
 const backgrounds = [
   `linear-gradient(135deg, #f6d365 0%, #d7f171 100%)`,
@@ -52,27 +36,12 @@ const backgrounds = [
   `linear-gradient(135deg, #255566 0%, #2a4858 100%)`,
 ];
 
-// const backgrounds = [
-//   `linear-gradient(135deg, #f6d365 0%, #fda085 100%)`,
-//   `linear-gradient(135deg, #fda085 0%, #f093fb 100%)`,
-//   `linear-gradient(135deg, #f093fb 0%, #f5576c 100%)`,
-//   `linear-gradient(135deg, #f5576c 0%, #5ee7df 100%)`,
-//   `linear-gradient(135deg, #5ee7df 0%, #b490ca 100%)`,
-//   `linear-gradient(135deg, #b490ca 0%, #c3cfe2 100%)`,
-//   `linear-gradient(135deg, #5ee7df 0%, #fda085 100%)`,
-//   `linear-gradient(135deg, #f5576c 0%, #fda085 100%)`,
-//   `linear-gradient(135deg, #c3cfe2 0%, #f5576c 100%)`,
-//   `linear-gradient(135deg, #fafa6e 0%, #d7f171 100%)`,
-//   `linear-gradient(135deg, #d7f171 0%, #b5e877 100%)`,
-//   `linear-gradient(135deg, #b5e877 0%, #95dd7d 100%)`,
-// ];
-
 export interface SetOrderProps {
   contentObject: any;
   contentStack: string[];
   listOrder: number[];
   id: string;
-  update: (nums: number[], ids: string[]) => void;
+  update: any; //(nums: number[], ids: string[]) => void;
   setContentObject: any; // () => void;
 }
 
@@ -83,7 +52,7 @@ const SetStack = (props: SetOrderProps) => {
   const {
     contentStack,
     listOrder,
-    id,
+    // id,
     update,
     contentObject,
     setContentObject,
@@ -168,11 +137,11 @@ const SetStack = (props: SetOrderProps) => {
       }
     }
     {
-      useTouch: true;
+      true;
     }
   });
 
-  const handleToggle = () => {};
+  // const handleToggle = () => {};
 
   return (
     <div
@@ -206,7 +175,7 @@ const SetStack = (props: SetOrderProps) => {
           content?.name || content?.textContent || content?.src || id;
 
         const fill = content?.fill || "black";
-        const stroke = content?.stroke || "white";
+        // const stroke = content?.stroke || "white";
 
         const ContentIcon =
           contentType === "eye" ? (

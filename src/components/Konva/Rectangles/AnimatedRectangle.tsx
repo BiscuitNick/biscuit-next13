@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+// import React, { useRef } from "react";
 const SpringKonva = require("@react-spring/konva");
 const { animated, useSpring } = SpringKonva;
-const Konva = require("react-konva");
-const { Rect } = Konva;
+// const Konva = require("react-konva");
+// const { Rect } = Konva;
 
 export interface RectProps {
   //Dimensions & Sizing

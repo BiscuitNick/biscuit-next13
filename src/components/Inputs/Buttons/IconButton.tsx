@@ -4,19 +4,19 @@ import TextFieldsIcon from "@mui/icons-material/TextFields";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import RectangleIcon from "@mui/icons-material/Rectangle";
 import CircleIcon from "@mui/icons-material/Circle";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import ToggleSwitch from "../ToggleSwitch";
+// import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+// import ToggleSwitch from "../ToggleSwitch";
 import SaveIcon from "@mui/icons-material/Upload";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 
-export interface IconButton {
+export interface IconButtonProps {
   size: string;
   handleClick: () => void;
   icon: string;
 }
 
-const IconButton = ({ size, icon = "Layers", handleClick }: IconButton) => {
+const IconButton = ({ icon = "Layers", handleClick }: IconButtonProps) => { //size, 
   const Icons: any = {
     "": <EditIcon />,
     image: <ImageIcon />,

@@ -6,7 +6,7 @@ export interface absoluteSizingParams {
 const getAbsoluteSizing = (params: absoluteSizingParams) => {
   const { relatives, box } = params;
   const { r_x, r_y, r_width, r_height } = relatives;
-  const { width, height, x, y } = box;
+  const { width, height} = box; //, x, y 
 
   const w = r_width * width;
   const h = r_height * height;

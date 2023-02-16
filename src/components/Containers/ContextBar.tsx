@@ -1,9 +1,9 @@
-export interface ContextBar {
+export interface ContextBarProps {
   show: boolean;
   children: any;
 }
 
-const ContextBar = (props: ContextBar) => {
+const ContextBar = (props: ContextBarProps) => {
   return (
     <div
       style={{
