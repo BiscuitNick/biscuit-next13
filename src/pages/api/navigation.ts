@@ -9,5 +9,10 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+
+    const { method } = req; //cookies, body, 
+    console.log(method);
+
+  
   res.status(200).json({ name: 'John Doe' })
 }
