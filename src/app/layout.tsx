@@ -1,14 +1,16 @@
 "use client"
 import React from 'react'
 import './globals.css'
-import NavigationBar from '../components/Layouts/NavigationBar'
+// import NavigationBar from '../components/Layouts/NavigationBar'
+// import useSWR from 'swr'
+// import { usePathname } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode 
 }) {
-
 
   return (
     <html lang="en">
@@ -18,8 +20,8 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <NavigationBar />
-
+        {/* <NavigationBar /> */}
+        Layout 
         {children}
       </body>
     </html>

@@ -6,6 +6,8 @@ import React from "react";
 import { getWordList } from "@/data/words";
 import { useLocalStorage } from 'usehooks-ts'
 
+import Keyboard from "@/components/Keyboard";
+
 const validCharacters = 'abcdefghijklmnopqrstuvwxyz';
 
 interface DemoXProps {
@@ -14,7 +16,7 @@ interface DemoXProps {
 
 const DemoX = (props:DemoXProps) => {
   const { params: {wordLength=5} } = props;
-  const maxGuesses = 7;
+  const maxGuesses = 6;
 
   const [answer, setAnswer] = useState('');
   const [possibleWords, setPossibleWords] = useState<string[]>([]);
@@ -28,25 +30,18 @@ const DemoX = (props:DemoXProps) => {
     const lowerCasedKey = key.toLowerCase();
 
     if(key.length===1 && validCharacters.includes(lowerCasedKey)){
-        console.log(23, 'valid character', key, lowerCasedKey)
-
         const tempGuess = currentGuess + lowerCasedKey;
         if(tempGuess.length <= answer.length){
             setCurrentGuess(tempGuess);
-
         }
-        
     }
     else if(key === 'Backspace'){
         const tempGuess = currentGuess.slice(0, -1);
         setCurrentGuess(tempGuess);
     }
     else if(key === 'Enter'){
-
-        // TODO validate word 
         if(currentGuess.length === answer.length){
-          console.log(currentGuess, answer);
-          console.log(possibleWords);
+
             const validWord = possibleWords.includes(currentGuess)
             if(validWord){
               setGuesses([...guesses, currentGuess]);
@@ -54,12 +49,29 @@ const DemoX = (props:DemoXProps) => {
             setCurrentGuess('');
         }
     }
+  }
 
-    else{
-        console.log(26, 'invalid character', key, lowerCasedKey)
+  const handleKeyPress = (key:String) => {
+    const lowerCasedKey = key.toLowerCase();
+    if(key.length===1 && validCharacters.includes(lowerCasedKey)){
+        const tempGuess = currentGuess + lowerCasedKey;
+        if(tempGuess.length <= answer.length){
+            setCurrentGuess(tempGuess);
+        }
     }
-
-
+    else if(key === 'Backspace'){
+        const tempGuess = currentGuess.slice(0, -1);
+        setCurrentGuess(tempGuess);
+    }
+    else if(key === 'Enter'){
+        if(currentGuess.length === answer.length){
+            const validWord = possibleWords.includes(currentGuess)
+            if(validWord){
+              setGuesses([...guesses, currentGuess]);
+            }
+            setCurrentGuess('');
+        }
+    }
   }
 
   useEffect(()=>{
@@ -72,7 +84,7 @@ const DemoX = (props:DemoXProps) => {
       setAnswer(randomWord);
       setSavedWord(randomWord);
     }
-  }, [])
+  }, [savedWord])
 
   useEffect(()=>{
     if(wordLength){
@@ -81,6 +93,11 @@ const DemoX = (props:DemoXProps) => {
     }
   }, [wordLength])
 
+  const resetGame = () => {
+    setSavedWord('');
+    setGuesses([]);
+  }
+
 
   return (
     <div 
@@ -88,22 +105,17 @@ const DemoX = (props:DemoXProps) => {
       onKeyDown={keyDownEvent} 
       tabIndex={0} 
       >
-      <div 
-        className='xordle-header' 
-      >
-        <h1>
-          {wordLength}-ORDLE
-        </h1>
-      </div>
       <div style={{position:'absolute', top:0, right:0}}>
-        <button onClick={()=>{setSavedWord(''); window.location.reload();}}>Reset</button>
+        <button onClick={resetGame}>Reset</button>
       </div>
       <Xordle 
         maxGuesses={maxGuesses}
         answer={answer}
         currentGuess={currentGuess}
         guesses={guesses}
+        // resetGame={resetGame}
       /> 
+      < Keyboard handleKeyPress={handleKeyPress} guesses={guesses} answer={answer} />
     </div>
   )
 }

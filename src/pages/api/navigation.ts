@@ -10,8 +10,12 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
 
-    const { method } = req; //cookies, body, 
-    console.log(method);
+    // const { method, url, query } = req; //cookies, body, 
+    // // console.log(Object.keys(req));
+    // console.log(Object.keys(res));
+
+    // console.log(method, url);
+
 
   
   res.status(200).json({ name: 'John Doe' })

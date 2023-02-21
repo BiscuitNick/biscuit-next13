@@ -7,6 +7,7 @@ interface XordleProps {
     guesses: string[];
     answer: string;
     currentGuess: string;
+    // resetGame: () => void;
 }
 
 const Xordle = (props: XordleProps) => {
@@ -38,7 +39,10 @@ const Xordle = (props: XordleProps) => {
                         background: applyValidation && isCorrect ? '#538d4e' 
                         : applyValidation && isInWord ? '#b59f3b' 
                         : applyValidation && isWrong ? '#3a3a3c' 
-                        : '#000000'}}
+                        : '#000000', 
+                        animation: applyValidation && word===answer ? `shake 1500ms ${answer.length*500+i*200}ms infinite` : 'none',
+                        // animationDelay: `${1500*answer.length}ms`,                   
+                    }}
                 >                    
                     <span style={{margin:'auto'}}>{letter.toUpperCase()}</span>
                 </div>
@@ -46,6 +50,10 @@ const Xordle = (props: XordleProps) => {
             }
         xordleRows.push(row);
     }
+
+    const isWinner = guesses.includes(answer);
+
+    console.log(53, isWinner, answer)
 
     return (
         <>
