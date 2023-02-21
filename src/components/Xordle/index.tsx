@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 // const validCharacters = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -7,13 +7,28 @@ interface XordleProps {
     guesses: string[];
     answer: string;
     currentGuess: string;
-    // resetGame: () => void;
+    resetGame?: () => void;
 }
 
 const Xordle = (props: XordleProps) => {
-    const {maxGuesses, answer, currentGuess, guesses } = props;
+    const {maxGuesses, answer, currentGuess, guesses, resetGame} = props;
     const wordLength = answer.length;
-    const cellSize = 62;
+    
+    const [cellSize, setCellSize] = useState(62);
+
+    useEffect(()=>{
+        const maxCellSize = Math.floor((window.innerWidth - (answer.length+1)*5) / answer.length);
+
+        if(maxCellSize < 62){
+            setCellSize(maxCellSize)
+        }
+
+        console.log(maxCellSize);
+    },[])
+
+
+    const isWinner = guesses.includes(answer);
+
 
     const xordleRows = [];
     for(let r=0; r<maxGuesses; r++){
@@ -51,7 +66,6 @@ const Xordle = (props: XordleProps) => {
         xordleRows.push(row);
     }
 
-    const isWinner = guesses.includes(answer);
 
     console.log(53, isWinner, answer)
 
@@ -69,6 +83,14 @@ const Xordle = (props: XordleProps) => {
                     > 
                 {xordleRows}
             </div>
+
+            {isWinner && <div style={{position:'absolute', height:'100%', width: '100%',   color: 'white', display:'grid'}}>
+                <div style={{margin:'auto', background:`rgba(0,0,0,.5)`,width:'50%', maxWidth: 1000, height: '50%', maxHeight: 1000, display:'grid'}}>
+                    <h3 style={{margin:'auto'}}>You Won</h3>
+                    <button style={{outline:'none', border:'none', borderRadius: 5, margin:'auto', width: 100, padding: 10, background:'#538d4e'}} onClick={resetGame}>New Game</button>
+                </div>
+            </div>}
+
         </>
 
     )
