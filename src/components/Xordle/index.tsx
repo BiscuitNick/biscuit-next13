@@ -23,7 +23,7 @@ const Xordle = (props: XordleProps) => {
             setCellSize(maxCellSize)
         }
 
-        console.log(maxCellSize);
+        // console.log(maxCellSize);
     },[])
 
 
@@ -67,7 +67,7 @@ const Xordle = (props: XordleProps) => {
     }
 
 
-    console.log(53, isWinner, answer)
+    // console.log(53, isWinner, answer)
 
     return (
         <>
@@ -85,9 +85,9 @@ const Xordle = (props: XordleProps) => {
             </div>
 
             {isWinner && <div style={{position:'absolute', height:'100%', width: '100%',   color: 'white', display:'grid'}}>
-                <div style={{margin:'auto', background:`rgba(0,0,0,.5)`,width:'50%', maxWidth: 1000, height: '50%', maxHeight: 1000, display:'grid'}}>
+                <div style={{margin:'auto', background:`rgba(0,0,0,.5)`,width:'50%', maxWidth: 1000, maxHeight: 1000, display:'grid', padding: 15, gridGap:10}}>
                     <h3 style={{margin:'auto'}}>You Won</h3>
-                    <button style={{outline:'none', border:'none', borderRadius: 5, margin:'auto', width: 100, padding: 10, background:'#538d4e'}} onClick={resetGame}>New Game</button>
+                    <button style={{outline:'none', border:'none', borderRadius: 5, margin:'auto', width: 100, padding: 10, background:'#538d4e', color:'white'}} onClick={resetGame}>New Game</button>
                 </div>
             </div>}
 
