@@ -8,7 +8,7 @@ const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotallySecretKey');
 
 
-const Page = (props) => {
+const Page = (props: { answer: any; hash: any; }) => {
     const {answer, hash} = props;
     
     const decryptedString = cryptr && hash ? cryptr.decrypt(hash) : '';
@@ -33,7 +33,7 @@ export async function getStaticPaths(){
     }
 }
 
-export async function getStaticProps({params}){
+export async function getStaticProps({params}:any){
     const {hash} = params;
 
 

@@ -123,7 +123,7 @@ const Page = ({answer, maxGuesses=6} : {answer:string; maxGuesses:number}) => {
       )
 }
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({query}:any) {
     // Object.keys(context).forEach(key => console.log(key, context[key]))
 
     const answer = query.answer || 'hello';
