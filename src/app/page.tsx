@@ -5,6 +5,9 @@ import styles from './page.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const APP_NAME = process.env.APP_NAME;
+
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -18,7 +21,7 @@ export default function Home() {
           >
             Powered By{' '}
             <Image
-              src="/assets/biscuitland/favicon-32x32.png"
+              src={`/assets/${APP_NAME}/favicon-32x32.png`}
               alt="Biscuit Land"
               className={styles.vercelLogo}
               width={32}
@@ -32,7 +35,7 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/assets/biscuitland/192x192.png"
+          src={`/assets/${APP_NAME}/192x192.png`}
           alt="Biscuit Land Logo"
           width={192}
           height={192}

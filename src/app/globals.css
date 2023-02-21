@@ -105,3 +105,165 @@ a {
     color-scheme: dark;
   }
 }
+
+.xordle-header{
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: 55px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-family: Clear Sans, Helvetica Neue, Arial, sans-serif;
+
+}
+
+
+.xordle-grid{
+  display: grid;
+  margin: auto;
+  grid-gap: 5px;
+
+  user-select: none;
+}
+
+.xordle-cell {
+  width: 62px;
+  height: 62px;
+
+  /* background-color: #000; */
+
+  background: #00000000;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3a3a3c;
+
+  font-size: 2rem;
+  font-family: Clear Sans, Helvetica Neue, Arial, sans-serif;
+
+  display:grid;
+
+  color: white;
+
+
+
+
+  /* transition: 1s; */
+  /* border-radius: 10px; */
+}
+
+.correct{
+
+  /* animation-delay: 500ms; */
+  /* animation-duration: 2s; */
+  background-color: #538d4e;
+  border-width: 0;
+}
+
+.in-word{
+  /* animation-delay: 500ms; */
+
+  background-color: #b59f3b;
+  border-width: 0;
+}
+
+.wrong{
+  /* animation-delay: 500ms; */
+
+  background-color: #3a3a3c;
+  border-width: 0;
+}
+
+.fullscreen-wrapper{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  background: #121213;
+  display: grid;
+}
+
+.xordle-gameover-modal{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  /* background: #121213; */
+  display: grid;
+
+  color:white;
+}
+
+.keyboard-grid{
+  display: grid;
+  /* grid-template-columns: repeat(10, 1fr); */
+  grid-gap: 5px;
+  margin: auto;
+  width: 100%;
+  /* max-width: 1000px; */
+  /* padding: 10px; */
+  user-select: none;
+}
+
+.keyboard-row{
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  grid-gap: 5px;
+  margin: auto;
+  /* width: 100%; */
+  /* max-width: 1000px; */
+  /* padding: 10px; */
+  user-select: none;
+}
+
+.keyboard-key{
+  min-width: 48px;
+  height: 58px;
+
+  font-size: 2rem;
+  font-family: Clear Sans, Helvetica Neue, Arial, sans-serif;
+  display:grid;
+  color: white;
+
+  margin: auto;
+  
+  outline: none;
+
+  border:none;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px #000;
+}
+
+.keyboard-key:active{
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+.keyboard-key > span{
+  margin: auto;
+  /* width: 100%;
+  height: 100%; */
+}
+
+.unused {
+  background: #818384;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

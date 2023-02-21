@@ -1,4 +1,5 @@
 // import React from "react";
+"use client"
 
 import React, { useEffect, useRef, useState } from "react";
 // import { useWindowSize } from "@biscuitnick/biscuit-library";
