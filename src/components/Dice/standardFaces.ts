@@ -65,30 +65,6 @@ export const puppyFaces: DiceFace[] = [
       backgroundPosition: "right top",
     },
   },
-  // {
-  //   img: "https://raw.githubusercontent.com/BiscuitNick/biscuit-components/master/public/images/5.png",
-  //   text: null,
-  //   backgroundColor: null,
-  //   border: `2px solid black`,
-  //   divStyle: {
-  //     border: `2px solid black`,
-  //     // backgroundColor: "#000000",
-  //     backgroundImage: `url(${image})`,
-  //     backgroundPosition: "left bottom",
-  //   },
-  // },
-  // {
-  //   img: "https://raw.githubusercontent.com/BiscuitNick/biscuit-components/master/public/images/6.png",
-  //   text: null,
-  //   backgroundColor: null,
-  //   border: `2px solid black`,
-  //   divStyle: {
-  //     border: `2px solid black`,
-  //     // backgroundColor: "#000000",
-  //     backgroundImage: `url(${image})`,
-  //     backgroundPosition: "left bottom",
-  //   },
-  // },
 ];
 
 export const standardFaces: DiceFace[] = [
@@ -171,3 +147,25 @@ export const standardFaces: DiceFace[] = [
     },
   },
 ];
+
+
+// export const standardFaces: DiceFace[] = [
+//   {
+
+//   },
+//   {
+
+//   },
+//   {
+
+//   },
+//   {
+
+//   },
+//   {
+
+//   },
+//   {
+
+//   },
+// ];

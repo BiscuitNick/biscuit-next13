@@ -10,7 +10,6 @@ import Keyboard from "@/components/Keyboard";
 import { getWordList } from "@/data/words";
 // import { useLocalStorage } from 'usehooks-ts'
 
-const CryptoJS = require("crypto-js");
 
 
 const validCharacters = 'abcdefghijklmnopqrstuvwxyz';
@@ -108,9 +107,6 @@ const Page = ({answer, maxGuesses=6} : {answer:string; maxGuesses:number}) => {
           onKeyDown={keyDownEvent} 
           tabIndex={0} 
           >
-          <div style={{position:'absolute', top:0, right:0}}>
-            <button onClick={resetGame}>Reset</button>
-          </div>
           <Xordle 
             maxGuesses={maxGuesses}
             answer={answer}
@@ -128,13 +124,13 @@ export async function getServerSideProps({query}:any) {
 
     const answer = query.answer || 'hello';
 
-    const encrypted = CryptoJS.AES.encrypt(answer, "Secret Passphrase").toString();
-    const decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase").toString();
+    // const encrypted = CryptoJS.AES.encrypt(answer, "Secret Passphrase").toString();
+    // const decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase").toString();
 
-    let stringified = JSON.stringify(encrypted);
+    // let stringified = JSON.stringify(encrypted);
 
   return {
-    props: {query, answer, encrypted:stringified, decrypted}, // will be passed to the page component as props
+    props: {query, answer}, // will be passed to the page component as props
   }
 }
 

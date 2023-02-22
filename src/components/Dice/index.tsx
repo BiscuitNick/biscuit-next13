@@ -18,10 +18,44 @@ interface DiceProps {
   margin: number;
 
   minRotation: boolean;
+
+  sides?: number;
 }
 
 const random360 = (min = 1, max = 5) =>
   (Math.floor(Math.random() * max) + min) * 360;
+
+
+const dotMatrix = [
+  [0, 0, 0, 0, 1, 0, 0, 0, 0], // 1 center dot 
+  [1, 0, 0, 0, 0, 0, 0, 0, 1], // 2 corner dots
+  [1, 0, 0, 0, 1, 0, 0, 0, 1], // 3, 2 corner dots + center dot
+  [1, 0, 1, 0, 0, 0, 1, 0, 1], // 4 corner dots
+  [1, 0, 1, 0, 1, 0, 1, 0, 1], // 5, 4 corner dots + center dot
+  [1, 0, 1, 1, 0, 1, 1, 0, 1], // 6, 4 corner dots + 2 side dots
+];
+
+const baseTenDotMatrix = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0], // 0
+  ...dotMatrix,
+  [1, 0, 1, 1, 1, 1, 1, 0, 1], // 7, 4 corner dots + 2 side dots + center dot
+  [1, 1, 1, 1, 0, 1, 1, 1, 1], // 8, 4 corner dots + 4 side dots
+  [1, 1, 1, 1, 1, 1, 1, 1, 1], // 9, 4 corner dots + 4 side dots + center dot
+]
+
+
+const Dots = dotMatrix.map( (dotMap,i):any => (
+  <div key={i} style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gridTemplateRows:'1fr 1fr 1fr', width: '100%', height: '100%', padding:10, boxSizing:'border-box'}}>
+    {dotMap.map( (dot,i) => dot ? <div key={i} style={{background:'black', width: '80%', height:'80%', margin:'auto', padding:5, boxSizing:'border-box', borderRadius:'100%'}}/> : <div key={i} />)}
+  </div>
+  ) 
+)
+
+const BaseTenDots = baseTenDotMatrix.map( (dotMap,i) => <div key={i} style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gridTemplateRows:'1fr 1fr 1fr', width: '100%', height: '100%', padding:10, boxSizing:'border-box'}}>
+{dotMap.map( (dot,i) => dot ? <div key={i} style={{background:'black', width: '80%', height:'80%', margin:'auto', padding:5, boxSizing:'border-box', borderRadius:'100%'}}/> : <div key={i}/>)}
+</div> )
+
+
 
 const Dice = (props: DiceProps) => {
   const {
@@ -32,19 +66,15 @@ const Dice = (props: DiceProps) => {
     faces,
     // margin,
     minRotation = false,
+    sides = 6 // 'standard-10 // 
   } = props;
 
   const width = size;
   const height = size;
+  const DotFaces = sides===10 ? BaseTenDots : Dots;
+
 
   const rotations = [
-    // { y: 180, x: 0, z: false, side: "back" },
-    // { y: -90, x: false, z: 0, side: "left" },
-    // { y: false, x: 90, z: 0, side: "top" },
-    // { y: false, x: -90, z: 0, side: "bottom" },
-    // { y: 90, x: false, z: 0, side: "right" },
-    // { y: 0, x: 0, z: false, side: "front" },
-
     { y: 180, x: 0, z: 0, side: "back" },
     { y: -90, x: 0, z: 0, side: "left" },
     { y: 0, x: 90, z: 0, side: "top" },
@@ -53,15 +83,12 @@ const Dice = (props: DiceProps) => {
     { y: 0, x: 0, z: 0, side: "front" },
   ];
 
-  const { x, y, z,  } = rotations[n % 6]; //side 
+  const { x, y, z,  } = rotations[n % 6]; 
 
-  var xRotation = x + random360(); //: random360();
-  var yRotation = y + random360(); //: random360();
-  var zRotation = z + random360(); //: random360();
+  var xRotation = x + random360();
+  var yRotation = y + random360();
+  var zRotation = z + random360();
 
-  // var xRotation = x !== false ? x + random360() : random360();
-  // var yRotation = y !== false ? y + random360() : random360();
-  // var zRotation = z !== false ? z + random360() : random360();
   if (minRotation) {
     xRotation = x || 0;
     yRotation = y || 0;
@@ -106,22 +133,17 @@ const Dice = (props: DiceProps) => {
       >
         {transforms.map((transform, i) => {
           let face = faces[i % faces.length];
-
-          const { divStyle } = face; //img, text, backgroundColor, border, 
+          const { divStyle } = face; //img, text, backgroundColor, border,  
 
           const style = {
-            // margin: "auto",
             width,
             height,
-
             ...divStyle,
-
-            // display: "grid",
-            // backgroundImage: img ? `url(${img})` : "",
-            // backgroundColor: backgroundColor || "",
-            // backgroundSize: `cover`,
-            // border: border || "",
-            // boxSizing: "border-box",
+            display: "grid",
+            backgroundColor: 'white',
+            backgroundSize: `cover`,
+            border: 'solid 2px black', //border || "",
+            boxSizing: "border-box",
           };
 
           return (
@@ -140,26 +162,11 @@ const Dice = (props: DiceProps) => {
                 style={{
                   ...style,
                   boxSizing: "border-box",
-                  // backgroundSize: size * 2,
                   display: "grid",
                 }}
               >
-                {/* {true ? ( */}
-                  <span
-                    style={{
-                      margin: "auto",
-                      fontSize: "3em",
-                      textAlign: "center",
-                      color: "white",
-                      userSelect: "none",
-                      fontFamily: "roboto",
-                      fontWeight: "bold",
-                      textShadow: "2px 2px 2px #000",
-                    }}
-                  >
-                    {i}
-                  </span>
-                {/* ) : null} */}
+                {DotFaces[n%6 === i%6 ? n%DotFaces.length : i%DotFaces.length]}
+                {/* <span style={{position:'absolute'}}>{i} {n}</span> */}
               </div>
             </div>
           );
@@ -172,41 +179,3 @@ const Dice = (props: DiceProps) => {
 };
 
 export default Dice;
-
-// const faces = [
-//   {
-//     ...faceProps,
-//     transform: `rotateY(180deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[0 % images.length]})` : null, //back
-//   },
-//   {
-//     ...faceProps,
-
-//     transform: `rotateY(90deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[1 % images.length]})` : null, //right
-//   },
-//   {
-//     ...faceProps,
-
-//     transform: `rotateX(-90deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[2 % images.length]})` : null, //bottom
-//   },
-//   {
-//     ...faceProps,
-
-//     transform: `rotateX(90deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[3 % images.length]})` : null, //top
-//   },
-//   {
-//     ...faceProps,
-
-//     transform: `rotateY(-90deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[4 % images.length]})` : null, //right
-//   },
-//   {
-//     ...faceProps,
-
-//     transform: `rotateY(0deg) translateZ(${size / 2}px)`,
-//     backgroundImage: images ? `url(${images?.[5 % images.length]})` : null, //front
-//   },
-// ];

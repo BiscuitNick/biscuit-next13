@@ -1,7 +1,9 @@
 import React from "react";
 
 import { useState, useEffect } from "react";
-import { Dice } from "../index";
+
+import Dice from ".";
+// import { Dice } from "../index";
 
 const diceDefaults = [
   "https://raw.githubusercontent.com/BiscuitNick/biscuit-components/master/public/images/0.png",
@@ -32,6 +34,8 @@ const hoursToDice = {
 };
 
 export const DiceClock = (props) => {
+
+
   const { hourStyle, minuteStyle, secondStyle, images = diceDefaults } = props;
   const [hourDice, setHours] = useState([6, 6]);
   const [minuteDice, setMinutes] = useState([5, 9]);
@@ -78,6 +82,9 @@ export const DiceClock = (props) => {
     return () => clearInterval(updateTime);
   }, []);
 
+  console.log(images);
+
+
   return (
     <>
       <div
@@ -90,9 +97,12 @@ export const DiceClock = (props) => {
         <Dice
           {...props}
           n={hourDice[0]}
-          images={hourDice[0] > 5 ? sixToFive : zeroToFive}
+          faces={hourDice[0] > 5 ? sixToFive : zeroToFive}
         />
-        <Dice {...props} n={hourDice[1]} images={sixToFive} />
+        <Dice 
+          {...props} 
+          n={hourDice[1]} 
+          faces={sixToFive} />
       </div>
       <div
         style={{
@@ -101,11 +111,14 @@ export const DiceClock = (props) => {
           ...minuteStyle,
         }}
       >
-        <Dice {...props} n={minuteDice[0]} images={zeroToFive} />
+        <Dice 
+          {...props} 
+          n={minuteDice[0]} 
+          faces={zeroToFive} />
         <Dice
           {...props}
           n={minuteDice[1]}
-          images={minuteDice[1] > 5 ? sixToNine : zeroToFive}
+          faces={minuteDice[1] > 5 ? sixToNine : zeroToFive}
         />
       </div>
       <div
@@ -115,11 +128,11 @@ export const DiceClock = (props) => {
           ...secondStyle,
         }}
       >
-        <Dice {...props} n={secondDice[0]} images={zeroToFive} />
+        <Dice {...props} n={secondDice[0]} faces={zeroToFive} />
         <Dice
           {...props}
           n={secondDice[1]}
-          images={secondDice[1] > 5 ? sixToNine : zeroToFive}
+          faces={secondDice[1] > 5 ? sixToNine : zeroToFive}
         />
       </div>
     </>
