@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ComponentMeta } from "@storybook/react"; //ComponentStory
 import SetStack from "./";
-import "../../../../styles/globals.css";
+// import "../../../../styles/globals.css";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
