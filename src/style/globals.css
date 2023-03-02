@@ -11,7 +11,7 @@
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
-    #16abff33 0deg,
+    #16abff33 0deg, 
     #0885ff33 55deg,
     #54d6ff33 120deg,
     #0071ff33 160deg,
@@ -208,6 +208,12 @@ a {
   /* max-width: 1000px; */
   /* padding: 10px; */
   user-select: none;
+
+  padding: 5px;
+  
+  box-sizing: border-box;
+
+  background-color: #000;
 }
 
 .keyboard-row{
@@ -252,6 +258,11 @@ a {
 
 .unused {
   background: #818384;
+}
+
+.pressed {
+  box-shadow: none;
+  transform: translate(1px, 1px);
 }
 
 @keyframes shake {

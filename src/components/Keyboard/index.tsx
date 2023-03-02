@@ -1,73 +1,54 @@
+import { useEffect, useState } from "react";
+import { QwertyNoSpacebar, QwertyWithSpacebar} from "./constants";
+import KeyboardKey from "./KeyboardKey";
+
 interface KeyboardProps{
     handleKeyPress: any; //(char:string) => void;
-    guesses: string[];
-    answer: string;
+    mode?: 'QwertyNoSpacebar' | 'QwertyWithSpacebar';
+    usedChars?: string[];
+    inWordChars?: string[];
+    correctChars?: string[];
+    downChar?: string;
 }
 
-
-const firstRow = 'qwertyuiop'.split('');
-const secondRow = 'asdfghjkl'.split('');
-const thirdRow = ['Enter', ...'zxcvbnm'.split(''), 'Backspace'];
-
 const Keyboard = (props:KeyboardProps) => {
-    const {handleKeyPress, guesses, answer} = props;
+    const {handleKeyPress, usedChars=[], inWordChars=[], correctChars=[], mode='QwertyWithSpacebar', downChar=''} = props;
+    const KeyboardTemplate = mode==='QwertyNoSpacebar' ? QwertyNoSpacebar : QwertyWithSpacebar;
+    
+    const [maxMinWidth, setMaxMinWidth] = useState(48);
 
-    const usedChars = new Set(guesses.join('').split(''));
-    const inWordChars: string[] = [];
-    const correctChars: string[] = [];
-
-    for(let i=0; i<guesses.length; i++){
-        for(let j=0; j<guesses[i].length; j++){
-            const guessChar = guesses[i][j];
-            if(answer[j] === guessChar){
-                correctChars.push(guessChar);
-            }
-            else if(answer.includes(guessChar)){
-                inWordChars.push(guessChar);
-            }
-        }
-    }
+    useEffect(()=>{
+        const width = window.innerWidth;
+        const maxKeyWidth = Math.floor((width - 55)/10)
+        setMaxMinWidth(maxKeyWidth)
+    },[])
 
     return (
-      <div className='keyboard-grid'>
-        <div className='keyboard-row'>
-            {firstRow.map((char) => {
-                const used = usedChars.has(char);
-                const inWord = inWordChars.includes(char);
-                const correct = correctChars.includes(char);
-                const className = correct ? 'correct' : inWord ? 'in-word' : used ? 'wrong' : 'unused';
+        <div className='keyboard-grid'>
+            {KeyboardTemplate.map((row, i) => {
                 return (
-                <button key={char} className={`keyboard-key ${className}`} onClick={() => handleKeyPress(char)}>
-                    <span>{char.toUpperCase()}</span>
-                </button>)})}
+                    <div key={i} className='keyboard-row'>{row.map((char) => {
+                        if(char.length===1){
+                            const className = correctChars.includes(char) ? 'correct' 
+                                : inWordChars.includes(char) ? 'in-word' 
+                                : usedChars.includes(char) ? 'wrong' 
+                                : 'unused';
+                            return <KeyboardKey id={char} key={char}  handleKeyPress={handleKeyPress} isDown={char===downChar} char={char} className={className} style={maxMinWidth<48 ? {minWidth:maxMinWidth}:{}}/>
+                        }
+                        const keyText = char==='Backspace' ? '⌫' 
+                            : char==='Spacebar' ? ''
+                            : char==='Enter' ? '↵' 
+                            : char;
+                            
+
+                        // TODO make this a multiple of maxMinWidth 
+                        const width = char==='Spacebar' ? 200 :'auto';
+
+                        return <KeyboardKey id={char} key={char} handleKeyPress={handleKeyPress} isDown={char===downChar || (char==='Spacebar' && downChar===' ')} char={keyText} className='unused' style={{fontSize: '1.5rem', width, minWidth: maxMinWidth < 48 ? maxMinWidth * 1.5 : 72}}/>
+                        })}
+                    </div>)
+                })}
         </div>
-        <div className='keyboard-row'>
-            {secondRow.map((char) => {
-                const used = usedChars.has(char);
-                const inWord = inWordChars.includes(char);
-                const correct = correctChars.includes(char);
-                const className = correct ? 'correct' : inWord ? 'in-word' : used ? 'wrong' : 'unused';
-                return (
-                <button key={char} className={`keyboard-key ${className}`} onClick={() => handleKeyPress(char)}>
-                    <span>{char.toUpperCase()}</span>
-                </button>)})}
-        </div>        
-        <div className='keyboard-row'>
-            {thirdRow.map((char) => {
-                const used = usedChars.has(char);
-                const inWord = inWordChars.includes(char);
-                const correct = correctChars.includes(char);
-                const className = correct ? 'correct' : inWord ? 'in-word' : used ? 'wrong' : 'unused';
-                return (
-                <button key={char} className={`keyboard-key ${className}`} onClick={() => handleKeyPress(char)}>
-                    {char.length === 1 ? <span>{char.toUpperCase()}</span>
-                    : char === 'Enter' ? <span style={{fontSize: '1.5rem', width: 76}}>Enter</span>
-                    : char === 'Backspace' ? <span style={{fontSize: '1.5rem', width: 76}}>⌫</span>
-                    : null
-                    }
-                </button>)})}
-        </div>    
-      </div>
     )
 }
 
