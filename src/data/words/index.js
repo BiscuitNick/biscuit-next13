@@ -11,6 +11,7 @@ import { letters10 } from "./letters-10";
 
 export const getWordList = (wordLength) => {
 
+
     switch (Number(wordLength)) {
         case 1: return letters1;
         case 2: return letters2;
@@ -22,6 +23,6 @@ export const getWordList = (wordLength) => {
         case 8: return letters8;
         case 9: return letters9;
         case 10: return letters10;
-        default: return [];
+        default: return letters5; //[];
 }
 }

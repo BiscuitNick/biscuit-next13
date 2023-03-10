@@ -1,8 +1,9 @@
 const getChars = (answer: string, guesses: string[]) => {
     const usedChars: string[] = [];
     const inWordChars: string[] = [];
-    const correctChars: string[] = [];
-
+    // const correctChars: string[] = [];
+    const correctChars: string[] = new Array(answer.length).fill('-');
+    
     guesses.map((guess) => {
         let guessChars = guess.split('');
         guessChars.map((guessChar,i) => {
@@ -20,5 +21,8 @@ const getChars = (answer: string, guesses: string[]) => {
 
     return {usedChars, inWordChars:inWord, correctChars};
 }
+
+
+
 
 export default getChars;
