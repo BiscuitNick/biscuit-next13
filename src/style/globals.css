@@ -133,7 +133,7 @@ a {
 
   /* background-color: #000; */
 
-  background: #00000000;
+  /* background: #00000000; */
 
   border-width: 2px;
   border-style: solid;
@@ -178,12 +178,14 @@ a {
 .fullscreen-wrapper{
   position: absolute;
   left: 0;
-  top: 0;
+  top: 40px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 40px);
   
-  background: #121213;
+  /* background: #121213; */
   display: grid;
+
+  outline:none;
 }
 
 .xordle-gameover-modal{
@@ -213,7 +215,7 @@ a {
   
   box-sizing: border-box;
 
-  background-color: #000;
+  /* background-color: #000; */
 }
 
 .keyboard-row{

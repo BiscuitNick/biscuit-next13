@@ -3,7 +3,7 @@ import Keyboard from "@/components/Keyboard";
 import useKeyboard from "@/components/Keyboard/useKeyboard";
 
 const KeyboardPage: React.FC = () => {
-    const {downChar, usedChars, inWordChars, correctChars, handleKeyInput, handleKeyDown, handleKeyUp, keyboardFocusRef, allowSpaces} = useKeyboard({answer:'tests'});
+    const {downChar, usedChars, inWordChars, correctChars, handleKeyInput, handleKeyDown, handleKeyUp, keyboardFocusRef, allowSpaces} = useKeyboard({answer:'glue'});
  
     return (
     <div 

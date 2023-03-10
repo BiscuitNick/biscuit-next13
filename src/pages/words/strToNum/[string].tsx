@@ -1,14 +1,15 @@
-import {strToNum} from '../../../utils/lazyScrambler';
+import {strToNum, numToStr} from '../../../utils/lazyScrambler';
 
 // const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 
-function WordsPage  ({numString}:any)  {
+function WordsPage  ({numString, string}:any)  {
 
-
-    // TODO PAGINATION & FILTERS
-
-    return <div>{numString}</div>
+    return <div>
+        <div>{string}</div>
+        <div>{numString}</div>
+    <div>{numToStr(numString)}</div>
+        </div>
 }
 
 export function getStaticPaths(){
@@ -21,13 +22,8 @@ export function getStaticPaths(){
 export function getStaticProps({params:{string}}:any){
     const numString = strToNum(string);
 
-    // const randomWord = await fetcher('http://localhost:3000/api/words/random');
-    // console.log(words)
-    
-    
-
     return {
-        props: {numString},
+        props: {string, numString},
     }
 
 }

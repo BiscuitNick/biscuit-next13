@@ -39,7 +39,6 @@ const Keyboard = (props:KeyboardProps) => {
                             : char==='Spacebar' ? ''
                             : char==='Enter' ? '↵' 
                             : char;
-                            
 
                         // TODO make this a multiple of maxMinWidth 
                         const width = char==='Spacebar' ? 200 :'auto';

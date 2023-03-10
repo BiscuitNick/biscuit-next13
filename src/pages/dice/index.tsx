@@ -6,10 +6,6 @@ const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * max)
 }
 
-
-// TODO: 
-// Stagger animation. 
-
 const Page = () => {
     const diceSides = 6;
     const [numberOfDice, ] = useState(5);
@@ -31,7 +27,7 @@ const Page = () => {
     }
 
 
-    return <div style={{display:'flex', gap: 50}}>
+    return <div style={{display:'flex', gap: 50, padding: 50, overflow:'visible'}}>
 {randomNums.map((num,i) => (
     <Dice 
     key={i}

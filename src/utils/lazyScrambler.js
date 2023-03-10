@@ -2,6 +2,7 @@
 // Allows passing custom parameter where we don't want the user to easily read the value
 
 // const base64Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+// const lowercaseChars = ' abcdefghijklmnopqrstuvwxyz';
 
 const charToNum = {
     ' ': 0,
@@ -86,7 +87,7 @@ const strToNum = (str) => {
     return num;
 }
 
-const twentyZevenPowers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(num => 27 ** num);
+const twentyZevenPowers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(num => 27 ** num);
 const numToStr = (num) => {
     const strLen = twentyZevenPowers.findIndex(power => power > num);
     let str = '';
@@ -102,7 +103,5 @@ const numToStr = (num) => {
     }
     return str;
 }
-
-
 
 export { lazyScrambler, unScrambler, strToNum, numToStr }

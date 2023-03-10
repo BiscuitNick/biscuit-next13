@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { alphabet } from "@/components/Keyboard/constants";
 import getChars from "@/components/Keyboard/getChars";
-import { getWordList } from "@/data/words";
 import { getCharMap } from "@/utils/getCharMap";
 
-const useKeyboard = (props:any) => {
+
+
+export const useFinderKeyboard = (props:any) => {
     const { answer: initAnswer, validateLength=true, validateWordExists=true, allowSpaces=false } = props;
     const [downChar, setDownChar] = useState<string>('');
     const [currentGuess, setCurrentGuess] = useState<string>('');
@@ -12,28 +13,19 @@ const useKeyboard = (props:any) => {
     const [answer, setAnswer] = useState<string>(initAnswer||'hello')
 
     const [possibleWords, setPossibleWords] = useState<string[]>([]);
-    // const [filteredWOrds, setFiltered] = useState<string[]>([]);
-
     const {usedChars, inWordChars, correctChars, } = useMemo(() => getChars(answer, guesses), [answer, guesses]);
-
     const charMap = useMemo(() => getCharMap(answer, guesses), [answer, guesses]);
-    const pendingAnswerRef = useRef<any>()
-    const keyboardFocusRef = useRef<any>();
 
-    useEffect(()=>{
-        if(answer && validateWordExists){
-            const wordList = getWordList(answer.length);
-            setPossibleWords(wordList);
-            // setFiltered(wordList);
-        }
-    },[answer, validateWordExists])
+
+    const keyboardFocusRef = useRef<any>();
+    
+
 
     const resetGame = () => {
         const randomWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
         setAnswer(randomWord);
         setGuesses([]);
         setCurrentGuess('');
-        // setFiltered(possibleWords);
     }
 
     const handleKeyDown = (e: any) => {
@@ -107,8 +99,6 @@ const useKeyboard = (props:any) => {
         resetKeyboardFocus();
     }, [])
 
-    return {charMap, resetGame, downChar, setDownChar, currentGuess, setCurrentGuess, guesses, setGuesses, answer, setAnswer, usedChars, inWordChars, correctChars, handleKeyInput, handleKeyDown, handleKeyUp, resetKeyboardFocus, pendingAnswerRef, keyboardFocusRef, validateWordExists, validateLength, allowSpaces, possibleWords, setPossibleWords}
+    return {charMap, resetGame, downChar, setDownChar, currentGuess, setCurrentGuess, guesses, setGuesses, answer, setAnswer, usedChars, inWordChars, correctChars, handleKeyInput, handleKeyDown, handleKeyUp, resetKeyboardFocus, keyboardFocusRef, validateWordExists, validateLength, allowSpaces, possibleWords, setPossibleWords}
 
 }
-
-export default useKeyboard;

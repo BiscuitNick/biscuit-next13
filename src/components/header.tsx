@@ -1,22 +1,59 @@
-import Link from "next/link"
-import { signIn, signOut, useSession } from "next-auth/react"
-// import styles from "./header.module.css"
-import styles from '@/style/page.module.css';
-// The approach used in this component shows how to build a sign in and sign out
-// component that works on pages which support both client and server side
-// rendering, and avoids any flash incorrect content on initial page load.
-
+import Link from "next/link";
+// import { signIn, signOut, useSession } from "next-auth/react"
+import Switch from "@mui/material/Switch";
+// import Button from '@mui/material/Button';
+import { isDarkModeAtom } from '@/data/atoms';
+import { useRecoilState } from "recoil";
 
 export default function Header() {
-  const { data: session, status } = useSession()
-  const loading = status === "loading"
+
+  const [isDarkMode, setIsDarkMode] = useRecoilState(isDarkModeAtom);
+
+
+  const HeaderLinks = [
+    { label: "Home", href: "/" },
+    { label: "Words", href: "/words" },
+    { label: "Dice", href: "/dice" },
+    { label: "X-Ordle", href: "/xordle" },
+  ];
 
   return (
     <header>
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
-      <div >
+
+      <nav
+        style={{
+          display: "grid",
+          gridAutoFlow: "column",
+          justifyContent: "space-around",
+          padding: 5,
+          height: 40,
+          boxSizing: "border-box",
+        }}
+      >
+        {HeaderLinks.map((link, index) => (
+          <div
+            key={index}
+            style={{ color: isDarkMode ? "white" : "black" }}
+          >
+            <Link href={link.href}>{link.label}</Link>{" "}
+          </div>
+        ))}
+
+        <Switch
+          checked={isDarkMode}
+          onChange={() => setIsDarkMode(!isDarkMode)}
+          inputProps={{ "aria-label": "controlled" }}
+          style={{ margin: "auto" }}
+        />
+      </nav>
+    </header>
+  );
+}
+
+/* <div >
         <p
           className={`nojs-show ${
             !session && loading ? styles.loading : styles.loaded
@@ -65,32 +102,4 @@ export default function Header() {
             </>
           )}
         </p>
-      </div>
-      <nav>
-        <ul className={styles.navItems}>
-          <li className={styles.navItem}>
-            <Link href="/">Home</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/client">Client</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/server">Server</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/protected">Protected</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/api-example">API</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/admin">Admin</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/me">Me</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  )
-}
+      </div> */
